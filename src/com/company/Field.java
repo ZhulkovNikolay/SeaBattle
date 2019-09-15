@@ -1,19 +1,25 @@
 package com.company;
 
 public class Field {
-    static char[][] playGround = new char[10][10];
-    static String[] rawChars = {" ", " A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
-    static String[] columnNumbers = {"1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "10"};
+    private Cell[][] playGround;
+    private String[] rawChars = {" ", " A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+    private String[] columnNumbers = {"1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "10"};
 
-    static void initField() {
+
+    public Field() {
+        playGround = new Cell[10][10];
+        initField();
+    }
+
+    private void initField() {
         for (int i = 0; i < playGround.length; i++) {
             for (int j = 0; j < playGround.length; j++) {
-                playGround[i][j] = '*';
+                playGround[i][j] = new Cell(j, i, false, false);
             }
         }
     }
 
-    static void drawField() {
+    void drawField() {
         for (int i = 0; i < rawChars.length; i++) {
             System.out.print(rawChars[i] + " ");
         }
@@ -23,7 +29,7 @@ public class Field {
                 if (j == 0) {
                     System.out.print(columnNumbers[i] + " ");
                 }
-                System.out.print(playGround[j][i] + " ");
+                System.out.print(playGround[i][j].cellContent + " ");
             }
         }
     }

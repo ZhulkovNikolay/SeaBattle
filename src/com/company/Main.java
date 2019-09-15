@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Field.initField();
-        Field.drawField();
+        Field field = new Field();
+        field.drawField();
     }
 }
